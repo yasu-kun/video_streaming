@@ -13,7 +13,7 @@ from tensorflow.keras.preprocessing.image import img_to_array, load_img
 def getimage():
 
     # 送信先のIPアドレスとポート番号を設定
-    HOST = "172.24.52.212"
+    HOST = "192.168.0.0"
     PORT = 5569
     sock=socket.socket(socket.AF_INET,socket.SOCK_STREAM)  
     sock.connect((HOST,PORT))   
@@ -50,8 +50,7 @@ eye_cascade_file = './haarcascade_eye.xml'
 eye_detector = cv2.CascadeClassifier(eye_cascade_file)  
 
 
-names = ['iuchi','jo','sentaro','sugeno']   
-#names = ['yasu','tate','saka']  
+names = ['A','B','C','D']   
 
 #cap = cv2.VideoCapture(0)  
 
@@ -86,21 +85,6 @@ while True:
 
          
         cv2.rectangle(img, (x,y), (x+w,y+h), (0,255,0), 2)  
-        # 顔の上半分を検出対象範囲とする  
-        # eyes_gray = gray[y : y + int(h/2), x : x + w]  
-        
-        # #==============Detect EYE==============
-        # eyes = eye_detector.detectMultiScale(  
-        #     eyes_gray,   
-        #     scaleFactor=1.11,   
-        #     minNeighbors=3,   
-        #     minSize=(8, 8))  
-  
-        # for ex, ey, ew, eh in eyes:  
-        #     cv2.rectangle(img, (x + ex, y + ey), (x + ex + ew, y + ey + eh), (255, 255, 255),2)  
-        # #======================================
-
-
 
         #t1 = time.time()  
         #id ,confidence = recognizer.predict(gray[y:y+h,x:x+w]) 
